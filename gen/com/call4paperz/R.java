@@ -10,10 +10,15 @@ package com.call4paperz;
 public final class R {
     public static final class attr {
     }
+    public static final class events {
+        public static final int listview=0x7f040000;
+    }
     public static final class layout {
-        public static final int main=0x7f020000;
+        public static final int events=0x7f020000;
     }
     public static final class string {
         public static final int app_name=0x7f030000;
+        public static final int not_connection=0x7f030001;
+        public static final int parse_error=0x7f030002;
     }
 }

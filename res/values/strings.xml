@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Call4Paper4Android</string>
+    <string name="not_connection">Could not connect to internet</string>
+    <string name="parse_error">An error occurred while trying to get the information</string>
 </resources>
