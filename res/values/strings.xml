@@ -5,8 +5,11 @@
     <string name="parse_error">An error occurred while trying to get the information</string>
     <string name="loading">Loading...</string>
     <string name="load_events">Loading Events</string>
+    <string name="load_proposals">Loading Proposals</string>
     <string name="events_menu_refresh">Refresh</string>
     <string name="event_label_date">Date:</string>
     <string name="event_label_url">URL:</string>
     <string name="event_label_twitter">Twitter:</string>
+    <string name="event_menu_proposals">Proposals</string>
+    <string name="modal_close">Close</string>
 </resources>

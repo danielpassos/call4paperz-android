@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import com.call4paperz.exception.NotConnectionException;
 import com.call4paperz.exception.RetrieveException;
 import com.call4paperz.model.Event;
+import com.call4paperz.model.Proposal;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -14,6 +15,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +27,6 @@ import java.util.List;
 public final class Retrieve {
 
     private Context context;
-    private final String EVENTS_URL = "http://call4paperz.com/events.jsonp";
 
     public Retrieve(Context context) {
         this.context = context;
@@ -92,7 +93,9 @@ public final class Retrieve {
 
         try {
 
-            String data = getDataFrom(EVENTS_URL).replaceAll("[(]", "").replaceAll("[)]", "");
+            String url = "http://call4paperz.com/events.jsonp";
+
+            String data = getDataFrom(url).replaceAll("[(]", "").replaceAll("[)]", "");
 
             JSONArray jsonData = new JSONArray(data);
 
@@ -106,6 +109,35 @@ public final class Retrieve {
         }
 
         return events;
+
+    }
+
+    public List<Proposal> proposals(Event event) throws NotConnectionException, RetrieveException {
+
+        if (!isOnline()) {
+            throw new NotConnectionException();
+        }
+
+        List<Proposal> proposals = new ArrayList<Proposal>();
+
+        try {
+
+            String url = "http://call4paperz.com/events/" + event.getId() + ".jsonp";
+
+            String data = getDataFrom(url).replaceAll("[(]", "").replaceAll("[)]", "");
+
+            JSONArray jsonData = new JSONObject(data).getJSONArray("proposals");
+
+            for (int i = 0; i < jsonData.length(); i++) {
+                Proposal proposal = new Proposal().fromJSON(jsonData.getJSONObject(i));
+                proposals.add(proposal);
+            }
+
+        } catch (JSONException e) {
+            throw new RetrieveException(e.getMessage());
+        }
+
+        return proposals;
 
     }
 

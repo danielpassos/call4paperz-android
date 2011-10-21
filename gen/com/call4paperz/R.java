@@ -21,25 +21,37 @@ public final class R {
         public static final int twitter=0x7f070005;
         public static final int url=0x7f070004;
     }
+    public static final class eventMenu {
+        public static final int proposal=0x7f090000;
+    }
     public static final class eventsMenu {
-        public static final int refresh=0x7f080000;
+        public static final int refresh=0x7f0a0000;
     }
     public static final class layout {
         public static final int event=0x7f030000;
         public static final int events=0x7f030001;
         public static final int events_line=0x7f030002;
+        public static final int proposals=0x7f030003;
+        public static final int proposals_line=0x7f030004;
     }
     public static final class menu {
-        public static final int menu_events=0x7f060000;
+        public static final int menu_event=0x7f060000;
+        public static final int menu_events=0x7f060001;
+    }
+    public static final class proposal {
+        public static final int name=0x7f080000;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
-        public static final int event_label_date=0x7f040006;
-        public static final int event_label_twitter=0x7f040008;
-        public static final int event_label_url=0x7f040007;
-        public static final int events_menu_refresh=0x7f040005;
+        public static final int event_label_date=0x7f040007;
+        public static final int event_label_twitter=0x7f040009;
+        public static final int event_label_url=0x7f040008;
+        public static final int event_menu_proposals=0x7f04000a;
+        public static final int events_menu_refresh=0x7f040006;
         public static final int load_events=0x7f040004;
+        public static final int load_proposals=0x7f040005;
         public static final int loading=0x7f040003;
+        public static final int modal_close=0x7f04000b;
         public static final int not_connection=0x7f040001;
         public static final int parse_error=0x7f040002;
     }
