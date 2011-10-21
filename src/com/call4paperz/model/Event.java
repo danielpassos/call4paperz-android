@@ -3,11 +3,12 @@ package com.call4paperz.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Event {
+public class Event implements Serializable {
 
     private Integer id;
     private String name;
@@ -47,6 +48,10 @@ public class Event {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getStringDate() {
+        return new SimpleDateFormat("MMMMM dd, yyyy").format(date);
     }
 
     public String getTwitter() {

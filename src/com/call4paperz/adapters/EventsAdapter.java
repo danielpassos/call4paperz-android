@@ -8,16 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.call4paperz.R;
 import com.call4paperz.model.Event;
 import com.call4paperz.util.BitmapGenerator;
 
 import java.util.List;
 
-public class EventsAdapater extends ArrayAdapter<Event> {
+public class EventsAdapter extends ArrayAdapter<Event> {
 
-    public EventsAdapater(Context context, List<Event> events) {
+    public EventsAdapter(Context context, List<Event> events) {
         super(context, R.layout.events_line, R.event.name, events);
     }
 
@@ -32,9 +31,6 @@ public class EventsAdapater extends ArrayAdapter<Event> {
 
         AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(logo);
         imageLoad.execute(event.getImageUrl());
-
-        TextView name = (TextView) view.findViewById(R.event.name);
-        name.setText(event.getName());
 
         return view;
 

@@ -38,7 +38,9 @@ public class BitmapGenerator extends AsyncTask<String, ProgressDialog, Bitmap> {
             e.printStackTrace();        // TODO
         } finally {
             try {
-                is.close();
+                if( is != null ) {
+                    is.close();
+                }
             } catch (Exception e) {
                 e.printStackTrace();    // TODO
             }
