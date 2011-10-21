@@ -34,6 +34,12 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int event_label_date=0x7f040006;
+        public static final int event_label_twitter=0x7f040008;
+        public static final int event_label_url=0x7f040007;
+        public static final int events_menu_refresh=0x7f040005;
+        public static final int load_events=0x7f040004;
+        public static final int loading=0x7f040003;
         public static final int not_connection=0x7f040001;
         public static final int parse_error=0x7f040002;
     }

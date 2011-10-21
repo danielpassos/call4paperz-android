@@ -45,7 +45,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date:"
+                    android:text="@string/event_label_date"
                     style="@style/EventDetail_FontRed"
                     />
             <TextView
@@ -63,7 +63,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="URL:"
+                    android:text="@string/event_label_url"
                     style="@style/EventDetail_FontRed"
                     />
             <TextView
@@ -81,7 +81,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Twitter:"
+                    android:text="@string/event_label_twitter"
                     style="@style/EventDetail_FontRed"
                     />
             <TextView

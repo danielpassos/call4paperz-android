@@ -71,7 +71,7 @@ public class EventsActivity extends ListActivity {
 
         @Override
         protected void onPreExecute() {
-            progress = ProgressDialog.show(EventsActivity.this, "Loading...", "Loading Events", true, true);
+            progress = ProgressDialog.show(EventsActivity.this, getString(R.string.loading), getString(R.string.load_events), true, true);
         }
 
         @Override
