@@ -30,7 +30,7 @@ public final class R {
         public static final int events_line=0x7f030002;
     }
     public static final class menu {
-        public static final int events_menu=0x7f060000;
+        public static final int menu_events=0x7f060000;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
