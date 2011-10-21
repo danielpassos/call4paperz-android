@@ -5,6 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -48,40 +51,49 @@ public class EventsActivity extends ListActivity {
         new LoadEventsTask().execute();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        new LoadEventsTask().execute();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.events_menu, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        new LoadEventsTask().execute();
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private class LoadEventsTask extends AsyncTask<Object, Object, List<Event>> {
 
-		private ProgressDialog progress;
-		@Override
-		protected void onPreExecute() {
-            progress = ProgressDialog.show(	EventsActivity.this, "Loading...", "Loading Events", true , true);
-		}
+        private ProgressDialog progress;
 
-		@Override
-		protected List<Event> doInBackground(Object... params) {
-			try {
-				return retrieve.events();
+        @Override
+        protected void onPreExecute() {
+            progress = ProgressDialog.show(EventsActivity.this, "Loading...", "Loading Events", true, true);
+        }
+
+        @Override
+        protected List<Event> doInBackground(Object... params) {
+            try {
+                return retrieve.events();
             } catch (NotConnectionException e) {
                 Toast.makeText(EventsActivity.this, getString(R.string.not_connection), Toast.LENGTH_LONG).show();
             } catch (RetrieveException e) {
                 Toast.makeText(EventsActivity.this, getString(R.string.parse_error), Toast.LENGTH_LONG).show();
             }
             return new ArrayList<Event>();
-		}
+        }
 
-		@Override
-		protected void onPostExecute(final List<Event> events) {
-			ArrayAdapter<Event> adapter = new EventsAdapter(EventsActivity.this, events);
+        @Override
+        protected void onPostExecute(final List<Event> events) {
+            ArrayAdapter<Event> adapter = new EventsAdapter(EventsActivity.this, events);
             setListAdapter(adapter);
 
-			progress.dismiss();
-		}
+            progress.dismiss();
+        }
 
-	}
+    }
 
 }
