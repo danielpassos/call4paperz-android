@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.call4paperz.R;
+import com.call4paperz.adapters.EventsAdapater;
 import com.call4paperz.exception.NotConnectionException;
 import com.call4paperz.exception.RetrieveException;
 import com.call4paperz.model.Event;
@@ -21,7 +22,6 @@ public class Events extends Activity {
         setContentView(R.layout.events);
 
         retriver = new Retrieve(this);
-
     }
 
     @Override
@@ -29,7 +29,7 @@ public class Events extends Activity {
         super.onStart();
 
         try {
-            ArrayAdapter<Event> adapter = new ArrayAdapter<Event>(this, android.R.layout.simple_list_item_1, retriver.events());
+            ArrayAdapter<Event> adapter = new EventsAdapater(this, retriver.events());
             ListView eventsListView = (ListView) findViewById(R.events.listview);
             eventsListView.setAdapter(adapter);
         } catch (NotConnectionException e) {
@@ -37,14 +37,6 @@ public class Events extends Activity {
         } catch (RetrieveException e) {
             Toast.makeText(this, getString(R.string.parse_error), Toast.LENGTH_LONG).show();
         }
-
-    }
-
-    private void startLoad() {
-
-    }
-
-    private void finishLoad() {
 
     }
 

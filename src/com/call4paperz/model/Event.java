@@ -3,16 +3,27 @@ package com.call4paperz.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Event {
 
+    private Integer id;
     private String name;
     private String description;
     private Date date;
     private String twitter;
     private String website;
     private String imageUrl;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -69,15 +80,23 @@ public class Event {
 
     public Event fromJSON(JSONObject jsonObject) throws JSONException {
 
+        id = jsonObject.getInt("id");
         name = jsonObject.getString("name");
         description = jsonObject.getString("description");
-//        date =
         twitter = jsonObject.getString("twitter");
         website = jsonObject.getString("url");
-//        imageUrl =
+        imageUrl = jsonObject.getJSONObject("picture").getJSONObject("cropped").getString("url");
+
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.getString("occurs_at"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         return this;
 
     }
+
+
 
 }

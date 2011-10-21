@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            >
+        <ImageView
+                android:id="@+event/logo"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:paddingTop="5dp"
+                android:paddingLeft="5dp"
+                />
+        <TextView
+                android:id="@+event/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:paddingLeft="5px"
+                android:paddingRight="5px"
+                android:textSize="16dp"
+                />
+    </LinearLayout>
+</ScrollView>
