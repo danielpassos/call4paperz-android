@@ -1,9 +1,12 @@
 package com.call4paperz.activities;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -32,6 +35,19 @@ public class ProposalsActivity extends ListActivity {
         event = (Event) getIntent().getExtras().getSerializable("event");
 
         retrieve = new Retrieve(this);
+
+        proposalsListView = (ListView) findViewById(android.R.id.list);
+        proposalsListView.setClickable(true);
+        proposalsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                Proposal proposal = (Proposal) proposalsListView.getAdapter().getItem(position);
+                new AlertDialog.Builder(ProposalsActivity.this)
+                        .setTitle(proposal.getName())
+                        .setMessage(proposal.getDescription())
+                        .setPositiveButton(getString(R.string.modal_close), null)
+                        .show();
+            }
+        });
 
         new LoadEventsTask().execute();
     }
