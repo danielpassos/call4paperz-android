@@ -27,7 +27,7 @@ public class EventActivity extends Activity {
         event = (Event) getIntent().getExtras().getSerializable("event");
 
         ImageView logo = (ImageView) findViewById(R.event.logo);
-        AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(logo);
+        AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(this, logo);
         imageLoad.execute(event.getImageUrl());
 
         TextView name = (TextView) findViewById(R.event.name);

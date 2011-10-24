@@ -19,6 +19,7 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_menu_refresh=0x7f020000;
+        public static final int no_image=0x7f020001;
     }
     public static final class event {
         public static final int date=0x7f080003;

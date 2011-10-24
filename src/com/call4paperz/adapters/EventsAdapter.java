@@ -29,7 +29,7 @@ public class EventsAdapter extends ArrayAdapter<Event> {
 
         final ImageView logo = (ImageView) view.findViewById(R.event.logo);
 
-        AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(logo);
+        AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(getContext(), logo);
         imageLoad.execute(event.getImageUrl());
 
         return view;
