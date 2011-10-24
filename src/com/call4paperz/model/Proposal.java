@@ -8,6 +8,8 @@ public class Proposal {
     private Integer id;
     private String name;
     private String description;
+    private Integer points;
+    private String speaker ;
 
     public Integer getId() {
         return id;
@@ -33,6 +35,22 @@ public class Proposal {
         this.description = description;
     }
 
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
+    public String getSpeaker() {
+        return speaker;
+    }
+
+    public void setSpeaker(String speaker) {
+        this.speaker = speaker;
+    }
+
     @Override
     public String toString() {
         return name;
@@ -42,6 +60,8 @@ public class Proposal {
         id = jsonObject.getInt("id");
         name = jsonObject.getString("name");
         description = jsonObject.getString("description");
+        points = jsonObject.getInt("acceptance_points");
+        speaker = jsonObject.getJSONObject("user").getString("name");
 
         return this;
     }
