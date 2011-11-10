@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 import com.call4paperz.R;
 import com.call4paperz.model.Event;
 import com.call4paperz.util.BitmapGenerator;
@@ -31,6 +32,15 @@ public class EventsAdapter extends ArrayAdapter<Event> {
 
         AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(getContext(), logo);
         imageLoad.execute(event.getImageUrl());
+
+        TextView proposals = (TextView) view.findViewById(R.event.proposals);
+        proposals.setText(String.valueOf(event.getProposals()));
+
+        TextView votes = (TextView) view.findViewById(R.event.votes);
+        votes.setText(String.valueOf(event.getVotes()));
+
+        TextView comments = (TextView) view.findViewById(R.event.comments);
+        comments.setText(String.valueOf(event.getComments()));
 
         return view;
 

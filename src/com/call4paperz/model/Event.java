@@ -19,6 +19,10 @@ public class Event implements Serializable {
     private String imageUrl;
     private String organizer;
 
+    private Integer proposals;
+    private Integer votes;
+    private Integer comments;
+
     public Integer getId() {
         return id;
     }
@@ -87,6 +91,30 @@ public class Event implements Serializable {
         this.organizer = organizer;
     }
 
+    public Integer getProposals() {
+        return proposals;
+    }
+
+    public void setProposals(Integer proposals) {
+        this.proposals = proposals;
+    }
+
+    public Integer getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Integer votes) {
+        this.votes = votes;
+    }
+
+    public Integer getComments() {
+        return comments;
+    }
+
+    public void setComments(Integer comments) {
+        this.comments = comments;
+    }
+
     @Override
     public String toString() {
         return name;
@@ -108,6 +136,10 @@ public class Event implements Serializable {
         }
 
         organizer = jsonObject.getJSONObject("user").getString("name");
+
+        proposals = jsonObject.getInt("proposals_count");
+        votes = jsonObject.getInt("votes_count");
+        comments = jsonObject.getInt("comments_count");
 
         return this;
 
