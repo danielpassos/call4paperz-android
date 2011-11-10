@@ -22,12 +22,16 @@ public final class R {
         public static final int no_image=0x7f020001;
     }
     public static final class event {
+        public static final int comments=0x7f080009;
         public static final int date=0x7f080003;
         public static final int description=0x7f080002;
         public static final int logo=0x7f080000;
         public static final int name=0x7f080001;
+        public static final int organizer=0x7f080006;
+        public static final int proposals=0x7f080007;
         public static final int twitter=0x7f080005;
         public static final int url=0x7f080004;
+        public static final int votes=0x7f080008;
     }
     public static final class eventMenu {
         public static final int proposal=0x7f0a0000;
@@ -54,14 +58,15 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f050000;
         public static final int event_label_date=0x7f050007;
+        public static final int event_label_organizer=0x7f05000a;
         public static final int event_label_twitter=0x7f050009;
         public static final int event_label_url=0x7f050008;
-        public static final int event_menu_proposals=0x7f05000a;
+        public static final int event_menu_proposals=0x7f05000b;
         public static final int events_menu_refresh=0x7f050006;
         public static final int load_events=0x7f050004;
         public static final int load_proposals=0x7f050005;
         public static final int loading=0x7f050003;
-        public static final int modal_close=0x7f05000b;
+        public static final int modal_close=0x7f05000c;
         public static final int not_connection=0x7f050001;
         public static final int parse_error=0x7f050002;
     }

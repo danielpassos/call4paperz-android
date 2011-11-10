@@ -44,6 +44,9 @@ public class EventActivity extends Activity {
 
         TextView twitter = (TextView) findViewById(R.event.twitter);
         twitter.setText(event.getTwitter());
+
+        TextView organizer = (TextView) findViewById(R.event.organizer);
+        organizer.setText(event.getOrganizer());
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

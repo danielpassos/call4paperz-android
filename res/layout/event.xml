@@ -91,5 +91,27 @@
                     style="@style/EventDetail_FontWhite"
                     />
         </LinearLayout>
+        <ImageView
+                android:src="@android:drawable/divider_horizontal_bright"
+                style="@style/LineDivisor"
+                />
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_label_organizer"
+                    style="@style/EventDetail_FontRed"
+                    />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+event/organizer"
+                    style="@style/EventDetail_FontWhite"
+                    />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -17,6 +17,7 @@ public class Event implements Serializable {
     private String twitter;
     private String website;
     private String imageUrl;
+    private String organizer;
 
     public Integer getId() {
         return id;
@@ -78,6 +79,14 @@ public class Event implements Serializable {
         this.imageUrl = imageUrl;
     }
 
+    public String getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(String organizer) {
+        this.organizer = organizer;
+    }
+
     @Override
     public String toString() {
         return name;
@@ -97,6 +106,8 @@ public class Event implements Serializable {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        organizer = jsonObject.getJSONObject("user").getString("name");
 
         return this;
 

@@ -10,6 +10,7 @@
     <string name="event_label_date">Date:</string>
     <string name="event_label_url">URL:</string>
     <string name="event_label_twitter">Twitter:</string>
+    <string name="event_label_organizer">Organizer:</string>
     <string name="event_menu_proposals">Proposals</string>
     <string name="modal_close">Close</string>
 </resources>
