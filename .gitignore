@@ -1,5 +1,34 @@
-gen/com/call4paperz/Manifest.java
-build.properties
-build.xml
+########## Android ##########
+
+# built application files
+bin/
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# generated files
+gen/
+
+# Local configuration file (sdk path, etc)
 local.properties
+
+# Proguard Files
+proguard-project.txt
+
+# 
+ant.properties
+build.xml
+
+########## Intellij #########
+
+*.iml
+.idea/
 out/
+
+########## Eclipse ##########
+
+.classpath
+.project
+classes/
