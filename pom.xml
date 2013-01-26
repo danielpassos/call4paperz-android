@@ -23,6 +23,19 @@
             <version>4.0.1.2</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>support-v4</artifactId>
+            <version>r7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.actionbarsherlock</groupId>
+            <artifactId>library</artifactId>
+            <type>apklib</type>
+            <version>4.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
