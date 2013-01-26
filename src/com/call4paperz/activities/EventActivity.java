@@ -1,28 +1,29 @@
 package com.call4paperz.activities;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.text.method.LinkMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.call4paperz.R;
 import com.call4paperz.model.Event;
 import com.call4paperz.util.BitmapGenerator;
 
-public class EventActivity extends Activity {
+public class EventActivity extends SherlockActivity {
 
     private Event event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event);
+        setContentView(R.layout.event_detail);
 
         event = (Event) getIntent().getExtras().getSerializable("event");
 
@@ -43,14 +44,14 @@ public class EventActivity extends Activity {
         url.setText(event.getWebsite());
 
         TextView twitter = (TextView) findViewById(R.event.twitter);
-        twitter.setText(event.getTwitter());
+        twitter.setText("@" + event.getTwitter());
 
         TextView organizer = (TextView) findViewById(R.event.organizer);
         organizer.setText(event.getOrganizer());
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
+        MenuInflater inflater = getSupportMenuInflater();
         inflater.inflate(R.menu.menu_event, menu);
         return true;
     }

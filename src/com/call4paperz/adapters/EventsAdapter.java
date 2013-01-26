@@ -18,7 +18,7 @@ import java.util.List;
 public class EventsAdapter extends ArrayAdapter<Event> {
 
     public EventsAdapter(Context context, List<Event> events) {
-        super(context, R.layout.events_line, R.event.name, events);
+        super(context, R.layout.events_item, R.event.name, events);
     }
 
     @Override
@@ -38,9 +38,6 @@ public class EventsAdapter extends ArrayAdapter<Event> {
 
         TextView votes = (TextView) view.findViewById(R.event.votes);
         votes.setText(String.valueOf(event.getVotes()));
-
-        TextView comments = (TextView) view.findViewById(R.event.comments);
-        comments.setText(String.valueOf(event.getComments()));
 
         return view;
 

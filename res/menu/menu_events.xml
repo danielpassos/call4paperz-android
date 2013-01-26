@@ -4,5 +4,5 @@
     <item android:id="@+eventsMenu/refresh"
           android:icon="@drawable/ic_menu_refresh"
           android:title="@string/events_menu_refresh"
-            />
+          android:showAsAction="ifRoom"/>
 </menu>

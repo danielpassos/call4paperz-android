@@ -13,4 +13,6 @@
     <string name="event_label_organizer">Organizer:</string>
     <string name="event_menu_proposals">Proposals</string>
     <string name="modal_close">Close</string>
+    <string name="proposals">proposals</string>
+    <string name="votes">votes</string>
 </resources>

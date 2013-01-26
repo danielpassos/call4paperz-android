@@ -1,18 +1,18 @@
 package com.call4paperz.activities;
 
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.call4paperz.R;
 import com.call4paperz.adapters.EventsAdapter;
 import com.call4paperz.exception.NotConnectionException;
@@ -23,7 +23,7 @@ import com.call4paperz.util.Retrieve;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventsActivity extends ListActivity {
+public class EventsActivity extends SherlockListActivity {
 
     private Retrieve retrieve;
     private ListView eventsListView;
@@ -51,14 +51,16 @@ public class EventsActivity extends ListActivity {
         new LoadEventsTask().execute();
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
+        MenuInflater inflater = getSupportMenuInflater();
         inflater.inflate(R.menu.menu_events, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         new LoadEventsTask().execute();
 
         return super.onOptionsItemSelected(item);
