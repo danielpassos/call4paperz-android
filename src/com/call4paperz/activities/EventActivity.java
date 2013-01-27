@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockActivity;
@@ -29,7 +28,7 @@ public class EventActivity extends SherlockActivity {
 
         ImageView logo = (ImageView) findViewById(R.event.logo);
         AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(this, logo);
-        imageLoad.execute(event.getImageUrl());
+        imageLoad.execute(event.getPicture().getCropped().getUrl());
 
         TextView name = (TextView) findViewById(R.event.name);
         name.setText(event.getName());
@@ -41,13 +40,13 @@ public class EventActivity extends SherlockActivity {
         date.setText(event.getStringDate());
 
         TextView url = (TextView) findViewById(R.event.url);
-        url.setText(event.getWebsite());
+        url.setText(event.getUrl());
 
         TextView twitter = (TextView) findViewById(R.event.twitter);
-        twitter.setText("@" + event.getTwitter());
+        twitter.setText(event.getTwitter());
 
         TextView organizer = (TextView) findViewById(R.event.organizer);
-        organizer.setText(event.getOrganizer());
+        organizer.setText(event.getOrganizer().getName());
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

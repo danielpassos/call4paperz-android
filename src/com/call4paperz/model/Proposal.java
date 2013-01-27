@@ -3,13 +3,16 @@ package com.call4paperz.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Proposal {
+import java.io.Serializable;
+
+public class Proposal implements Serializable {
 
     private Integer id;
     private String name;
     private String description;
-    private Integer points;
-    private String speaker ;
+    private Integer acceptancePoints;
+    private Integer votesCount;
+    private User user;
 
     public Integer getId() {
         return id;
@@ -31,39 +34,37 @@ public class Proposal {
         return description;
     }
 
+    public Integer getAcceptancePoints() {
+        return acceptancePoints;
+    }
+
+    public void setAcceptancePoints(Integer acceptancePoints) {
+        this.acceptancePoints = acceptancePoints;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public Integer getPoints() {
-        return points;
+    public Integer getVotesCount() {
+        return votesCount;
     }
 
-    public void setPoints(Integer points) {
-        this.points = points;
+    public void setVotesCount(Integer votesCount) {
+        this.votesCount = votesCount;
     }
 
-    public String getSpeaker() {
-        return speaker;
+    public User getUser() {
+        return user;
     }
 
-    public void setSpeaker(String speaker) {
-        this.speaker = speaker;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
         return name;
-    }
-
-    public Proposal fromJSON(JSONObject jsonObject) throws JSONException {
-        id = jsonObject.getInt("id");
-        name = jsonObject.getString("name");
-        description = jsonObject.getString("description");
-        points = jsonObject.getInt("acceptance_points");
-        speaker = jsonObject.getJSONObject("user").getString("name");
-
-        return this;
     }
 
 }

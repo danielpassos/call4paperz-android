@@ -1,27 +1,28 @@
 package com.call4paperz.model;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Event implements Serializable {
 
     private Integer id;
     private String name;
     private String description;
-    private Date date;
+    private Date occursAt;
     private String twitter;
-    private String website;
-    private String imageUrl;
-    private String organizer;
+    private String url;
+    private Integer votesCount;
 
-    private Integer proposals;
-    private Integer votes;
-    private Integer comments;
+    private Picture picture;
+
+    @SerializedName("user")
+    private User organizer;
+
+    private List<Proposal> proposals;
 
     public Integer getId() {
         return id;
@@ -47,16 +48,16 @@ public class Event implements Serializable {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getOccursAt() {
+        return occursAt;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setOccursAt(Date occursAt) {
+        this.occursAt = occursAt;
     }
 
     public String getStringDate() {
-        return new SimpleDateFormat("MMMMM dd, yyyy").format(date);
+        return new SimpleDateFormat("MMMMM dd, yyyy").format(occursAt);
     }
 
     public String getTwitter() {
@@ -67,84 +68,48 @@ public class Event implements Serializable {
         this.twitter = twitter;
     }
 
-    public String getWebsite() {
-        return website;
+    public String getUrl() {
+        return url;
     }
 
-    public void setWebsite(String website) {
-        this.website = website;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public Integer getVotesCount() {
+        return votesCount;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setVotesCount(Integer votesCount) {
+        this.votesCount = votesCount;
     }
 
-    public String getOrganizer() {
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
+    }
+
+    public User getOrganizer() {
         return organizer;
     }
 
-    public void setOrganizer(String organizer) {
+    public void setOrganizer(User organizer) {
         this.organizer = organizer;
     }
 
-    public Integer getProposals() {
+    public List<Proposal> getProposals() {
         return proposals;
     }
 
-    public void setProposals(Integer proposals) {
+    public void setProposals(List<Proposal> proposals) {
         this.proposals = proposals;
     }
 
-    public Integer getVotes() {
-        return votes;
-    }
-
-    public void setVotes(Integer votes) {
-        this.votes = votes;
-    }
-
-    public Integer getComments() {
-        return comments;
-    }
-
-    public void setComments(Integer comments) {
-        this.comments = comments;
-    }
-
-    @Override
     public String toString() {
         return name;
     }
-
-    public Event fromJSON(JSONObject jsonObject) throws JSONException {
-
-        id = jsonObject.getInt("id");
-        name = jsonObject.getString("name");
-        description = jsonObject.getString("description");
-        twitter = jsonObject.getString("twitter");
-        website = jsonObject.getString("url");
-        imageUrl = jsonObject.getJSONObject("picture").getJSONObject("cropped").getString("url");
-
-        try {
-            date = new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.getString("occurs_at"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        organizer = jsonObject.getJSONObject("user").getString("name");
-
-        proposals = jsonObject.getInt("proposals_count");
-        votes = jsonObject.getInt("votes_count");
-        comments = jsonObject.getInt("comments_count");
-
-        return this;
-
-    }
-
-
 
 }

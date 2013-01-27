@@ -31,13 +31,13 @@ public class EventsAdapter extends ArrayAdapter<Event> {
         final ImageView logo = (ImageView) view.findViewById(R.event.logo);
 
         AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(getContext(), logo);
-        imageLoad.execute(event.getImageUrl());
+        imageLoad.execute(event.getPicture().getCropped().getUrl());
 
         TextView proposals = (TextView) view.findViewById(R.event.proposals);
-        proposals.setText(String.valueOf(event.getProposals()));
+        proposals.setText(String.valueOf(event.getProposals().size()));
 
         TextView votes = (TextView) view.findViewById(R.event.votes);
-        votes.setText(String.valueOf(event.getVotes()));
+        votes.setText(String.valueOf(event.getVotesCount()));
 
         return view;
 

@@ -2,38 +2,32 @@ package com.call4paperz.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.call4paperz.Call4PaperzApplication;
 import com.call4paperz.R;
 import com.call4paperz.adapters.EventsAdapter;
-import com.call4paperz.exception.NotConnectionException;
-import com.call4paperz.exception.RetrieveException;
 import com.call4paperz.model.Event;
-import com.call4paperz.util.Retrieve;
+import org.jboss.aerogear.android.Callback;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class EventsActivity extends SherlockListActivity {
 
-    private Retrieve retrieve;
     private ListView eventsListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events);
-
-        retrieve = new Retrieve(this);
 
         eventsListView = (ListView) findViewById(android.R.id.list);
         eventsListView.setClickable(true);
@@ -47,8 +41,7 @@ public class EventsActivity extends SherlockListActivity {
             }
         });
 
-
-        new LoadEventsTask().execute();
+        this.loadEvents();
     }
 
     @Override
@@ -60,41 +53,37 @@ public class EventsActivity extends SherlockListActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        new LoadEventsTask().execute();
+        if (item.getItemId() == R.eventsMenu.refresh) {
+            loadEvents();
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void loadEvents() {
 
-    private class LoadEventsTask extends AsyncTask<Object, Object, List<Event>> {
+        final ProgressDialog progress = ProgressDialog.show(EventsActivity.this,
+                getString(R.string.loading),
+                getString(R.string.load_events),
+                true,
+                true);
 
-        private ProgressDialog progress;
+        Call4PaperzApplication application = (Call4PaperzApplication) getApplication();
 
-        @Override
-        protected void onPreExecute() {
-            progress = ProgressDialog.show(EventsActivity.this, getString(R.string.loading), getString(R.string.load_events), true, true);
-        }
-
-        @Override
-        protected List<Event> doInBackground(Object... params) {
-            try {
-                return retrieve.events();
-            } catch (NotConnectionException e) {
-                Toast.makeText(EventsActivity.this, getString(R.string.not_connection), Toast.LENGTH_LONG).show();
-            } catch (RetrieveException e) {
-                Toast.makeText(EventsActivity.this, getString(R.string.parse_error), Toast.LENGTH_LONG).show();
+        application.getPipeline().get("events").read(new Callback<List<Event>>() {
+            @Override
+            public void onSuccess(List<Event> events) {
+                setListAdapter(new EventsAdapter(EventsActivity.this, events));
+                progress.dismiss();
             }
-            return new ArrayList<Event>();
-        }
 
-        @Override
-        protected void onPostExecute(final List<Event> events) {
-            ArrayAdapter<Event> adapter = new EventsAdapter(EventsActivity.this, events);
-            setListAdapter(adapter);
-
-            progress.dismiss();
-        }
+            @Override
+            public void onFailure(Exception e) {
+                progress.dismiss();
+                Log.e("Call4Paperz", e.getMessage(), e);
+                Toast.makeText(EventsActivity.this, getString(R.string.not_connection), Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 
