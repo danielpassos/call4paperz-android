@@ -3,5 +3,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+eventMenu/proposal"
           android:title="@string/event_menu_proposals"
+          android:icon="@drawable/ic_menu_proposals"
           android:showAsAction="ifRoom"/>
 </menu>
