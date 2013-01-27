@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.actionbarsherlock.app.SherlockListActivity;
 import com.call4paperz.R;
 import com.call4paperz.adapters.ProposalsAdapter;
 import com.call4paperz.exception.NotConnectionException;
@@ -21,7 +22,7 @@ import com.call4paperz.util.Retrieve;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProposalsActivity extends ListActivity {
+public class ProposalsActivity extends SherlockListActivity {
 
     private Retrieve retrieve;
     private ListView proposalsListView;

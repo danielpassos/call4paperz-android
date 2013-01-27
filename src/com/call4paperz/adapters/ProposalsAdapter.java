@@ -13,7 +13,7 @@ import java.util.List;
 public class ProposalsAdapter extends ArrayAdapter<Proposal> {
 
     public ProposalsAdapter(Context context, List<Proposal> proposals) {
-        super(context, R.layout.proposals_line, R.proposal.name, proposals);
+        super(context, R.layout.proposals_item, R.proposal.name, proposals);
     }
 
     @Override
