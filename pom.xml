@@ -36,6 +36,20 @@
             <type>apklib</type>
             <version>4.1.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-android</artifactId>
+            <version>1.0.0.CR1-SNAPSHOT</version>
+            <type>apklib</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
