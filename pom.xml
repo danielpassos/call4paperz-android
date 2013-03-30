@@ -40,7 +40,7 @@
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-android</artifactId>
-            <version>1.0.0.CR1-SNAPSHOT</version>
+            <version>1.0.0</version>
             <type>apklib</type>
         </dependency>
 
