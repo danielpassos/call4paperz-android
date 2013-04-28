@@ -7,4 +7,4 @@ Android Version for [Call4Paperz](http://call4paperz.com)
 ![call4paperz](https://lh6.ggpht.com/IPQhbPaZ84g7JvFGfalK_gV85qQE1RPTs5KYcG-YGcQOB4ZWOYiGpNiMpAgs7hSN78hK=h230)
 
 ## Google Play
-[https://play.google.com/store/apps/details?id=com.call4paperz](https://play.google.com/store/apps/details?id=com.call4paperz)
+[https://play.google.com/store/apps/details?id=com.call4paperz.android](https://play.google.com/store/apps/details?id=com.call4paperz.android)
