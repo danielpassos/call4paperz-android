@@ -1,7 +1,4 @@
-package com.call4paperz.model;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+package com.call4paperz.android.model;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.call4paperz.model;
+package com.call4paperz.android.model;
 
 import java.io.Serializable;
 

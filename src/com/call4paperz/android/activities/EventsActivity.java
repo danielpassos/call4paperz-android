@@ -1,4 +1,4 @@
-package com.call4paperz.activities;
+package com.call4paperz.android.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,11 +12,10 @@ import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.call4paperz.Call4PaperzApplication;
-import com.call4paperz.R;
-import com.call4paperz.adapters.EventsAdapter;
-import com.call4paperz.model.Event;
-import org.jboss.aerogear.android.Callback;
+import com.call4paperz.android.Call4PaperzApplication;
+import com.call4paperz.android.R;
+import com.call4paperz.android.adapters.EventsAdapter;
+import com.call4paperz.android.model.Event;
 import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 

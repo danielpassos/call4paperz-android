@@ -1,4 +1,4 @@
-package com.call4paperz.exception;
+package com.call4paperz.android.exception;
 
 import android.util.Log;
 

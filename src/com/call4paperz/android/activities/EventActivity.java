@@ -1,4 +1,4 @@
-package com.call4paperz.activities;
+package com.call4paperz.android.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.call4paperz.R;
-import com.call4paperz.model.Event;
-import com.call4paperz.util.BitmapGenerator;
+import com.call4paperz.android.R;
+import com.call4paperz.android.model.Event;
+import com.call4paperz.android.util.BitmapGenerator;
 
 public class EventActivity extends SherlockActivity {
 

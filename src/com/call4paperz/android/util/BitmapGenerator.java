@@ -1,4 +1,4 @@
-package com.call4paperz.util;
+package com.call4paperz.android.util;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.ImageView;
-import com.call4paperz.R;
+import com.call4paperz.android.R;
 
 import java.io.InputStream;
 import java.net.URL;

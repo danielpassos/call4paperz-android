@@ -1,4 +1,4 @@
-package com.call4paperz.adapters;
+package com.call4paperz.android.adapters;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.call4paperz.R;
-import com.call4paperz.model.Event;
-import com.call4paperz.util.BitmapGenerator;
+import com.call4paperz.android.R;
+import com.call4paperz.android.model.Event;
+import com.call4paperz.android.util.BitmapGenerator;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
-package com.call4paperz.adapters;
+package com.call4paperz.android.adapters;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.call4paperz.R;
-import com.call4paperz.model.Proposal;
+import com.call4paperz.android.R;
+import com.call4paperz.android.model.Proposal;
 
 import java.util.List;
 

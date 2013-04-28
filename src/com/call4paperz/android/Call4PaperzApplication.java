@@ -1,10 +1,8 @@
-package com.call4paperz;
+package com.call4paperz.android;
 
 import android.app.Activity;
 import android.app.Application;
-import com.call4paperz.model.Event;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
+import com.call4paperz.android.model.Event;
 import com.google.gson.GsonBuilder;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;

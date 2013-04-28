@@ -1,4 +1,4 @@
-package com.call4paperz.activities;
+package com.call4paperz.android.activities;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListActivity;
-import com.call4paperz.R;
-import com.call4paperz.adapters.ProposalsAdapter;
-import com.call4paperz.model.Event;
-import com.call4paperz.model.Proposal;
+import com.call4paperz.android.R;
+import com.call4paperz.android.adapters.ProposalsAdapter;
+import com.call4paperz.android.model.Event;
+import com.call4paperz.android.model.Proposal;
 
 public class ProposalsActivity extends SherlockListActivity {
 
