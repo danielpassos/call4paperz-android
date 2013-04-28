@@ -16,7 +16,7 @@ import com.call4paperz.android.Call4PaperzApplication;
 import com.call4paperz.android.R;
 import com.call4paperz.android.adapters.EventsAdapter;
 import com.call4paperz.android.model.Event;
-import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
+import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 
 import java.util.List;
@@ -72,10 +72,10 @@ public class EventsActivity extends SherlockListActivity {
         Call4PaperzApplication application = (Call4PaperzApplication) getApplication();
         LoaderPipe<Event> eventPipe = application.getEventPipe(this);
 
-        eventPipe.read(new AbstractActivityCallback<List<Event>>() {
+        eventPipe.read(new Callback<List<Event>>() {
             @Override
             public void onSuccess(List<Event> events) {
-                setListAdapter(new EventsAdapter(EventsActivity.this, events));
+                eventsListView.setAdapter(new EventsAdapter(EventsActivity.this, events));
                 progress.dismiss();
             }
 
