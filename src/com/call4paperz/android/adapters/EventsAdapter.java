@@ -1,9 +1,6 @@
 package com.call4paperz.android.adapters;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -11,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.call4paperz.android.R;
 import com.call4paperz.android.model.Event;
-import com.call4paperz.android.util.BitmapGenerator;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -30,8 +27,8 @@ public class EventsAdapter extends ArrayAdapter<Event> {
 
         final ImageView logo = (ImageView) view.findViewById(R.event.logo);
 
-        AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(getContext(), logo);
-        imageLoad.execute(event.getPicture().getCropped().getUrl());
+        String imageURL = event.getPicture().getCropped().getUrl();
+        Picasso.with(getContext()).load(imageURL).placeholder(R.drawable.no_image).into(logo);
 
         TextView proposals = (TextView) view.findViewById(R.event.proposals);
         proposals.setText(String.valueOf(event.getProposals().size()));

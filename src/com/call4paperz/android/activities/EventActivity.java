@@ -1,9 +1,6 @@
 package com.call4paperz.android.activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,7 +10,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.call4paperz.android.R;
 import com.call4paperz.android.model.Event;
-import com.call4paperz.android.util.BitmapGenerator;
+import com.squareup.picasso.Picasso;
 
 public class EventActivity extends SherlockActivity {
 
@@ -27,8 +24,8 @@ public class EventActivity extends SherlockActivity {
         event = (Event) getIntent().getExtras().getSerializable("event");
 
         ImageView logo = (ImageView) findViewById(R.event.logo);
-        AsyncTask<String, ProgressDialog, Bitmap> imageLoad = new BitmapGenerator(this, logo);
-        imageLoad.execute(event.getPicture().getCropped().getUrl());
+        String imageURL = event.getPicture().getCropped().getUrl();
+        Picasso.with(this).load(imageURL).placeholder(R.drawable.no_image).into(logo);
 
         TextView name = (TextView) findViewById(R.event.name);
         name.setText(event.getName());
