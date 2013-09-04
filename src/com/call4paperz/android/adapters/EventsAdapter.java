@@ -15,7 +15,7 @@ import java.util.List;
 public class EventsAdapter extends ArrayAdapter<Event> {
 
     public EventsAdapter(Context context, List<Event> events) {
-        super(context, R.layout.events_item, R.event.name, events);
+        super(context, R.layout.events_item, R.id.name, events);
     }
 
     @Override
@@ -25,15 +25,15 @@ public class EventsAdapter extends ArrayAdapter<Event> {
 
         View view = super.getView(position, convertView, parent);
 
-        final ImageView logo = (ImageView) view.findViewById(R.event.logo);
+        final ImageView logo = (ImageView) view.findViewById(R.id.logo);
 
         String imageURL = event.getPicture().getCropped().getUrl();
         Picasso.with(getContext()).load(imageURL).placeholder(R.drawable.no_image).into(logo);
 
-        TextView proposals = (TextView) view.findViewById(R.event.proposals);
+        TextView proposals = (TextView) view.findViewById(R.id.proposals);
         proposals.setText(String.valueOf(event.getProposals().size()));
 
-        TextView votes = (TextView) view.findViewById(R.event.votes);
+        TextView votes = (TextView) view.findViewById(R.id.votes);
         votes.setText(String.valueOf(event.getVotesCount()));
 
         return view;

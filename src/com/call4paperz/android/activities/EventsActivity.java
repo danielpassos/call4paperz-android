@@ -54,10 +54,7 @@ public class EventsActivity extends SherlockListActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.eventsMenu.refresh) {
-            loadEvents();
-        }
-
+        loadEvents();
         return super.onOptionsItemSelected(item);
     }
 

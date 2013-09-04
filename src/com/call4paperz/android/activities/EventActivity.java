@@ -23,26 +23,26 @@ public class EventActivity extends SherlockActivity {
 
         event = (Event) getIntent().getExtras().getSerializable("event");
 
-        ImageView logo = (ImageView) findViewById(R.event.logo);
+        ImageView logo = (ImageView) findViewById(R.id.logo);
         String imageURL = event.getPicture().getCropped().getUrl();
         Picasso.with(this).load(imageURL).placeholder(R.drawable.no_image).into(logo);
 
-        TextView name = (TextView) findViewById(R.event.name);
+        TextView name = (TextView) findViewById(R.id.name);
         name.setText(event.getName());
 
-        TextView description = (TextView) findViewById(R.event.description);
+        TextView description = (TextView) findViewById(R.id.description);
         description.setText(event.getDescription());
 
-        TextView date = (TextView) findViewById(R.event.date);
+        TextView date = (TextView) findViewById(R.id.date);
         date.setText(event.getStringDate());
 
-        TextView url = (TextView) findViewById(R.event.url);
+        TextView url = (TextView) findViewById(R.id.url);
         url.setText(event.getUrl());
 
-        TextView twitter = (TextView) findViewById(R.event.twitter);
+        TextView twitter = (TextView) findViewById(R.id.twitter);
         twitter.setText(event.getTwitter());
 
-        TextView organizer = (TextView) findViewById(R.event.organizer);
+        TextView organizer = (TextView) findViewById(R.id.organizer);
         organizer.setText(event.getOrganizer().getName());
     }
 

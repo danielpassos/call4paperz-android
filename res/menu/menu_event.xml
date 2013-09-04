@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+eventMenu/proposal"
+    <item android:id="@+id/proposal"
           android:title="@string/event_menu_proposals"
           android:icon="@drawable/ic_menu_proposals"
           android:showAsAction="ifRoom"/>
