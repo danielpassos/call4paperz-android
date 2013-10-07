@@ -13,7 +13,7 @@ import java.util.List;
 public class ProposalsAdapter extends ArrayAdapter<Proposal> {
 
     public ProposalsAdapter(Context context, List<Proposal> proposals) {
-        super(context, R.layout.proposals_item, R.proposal.name, proposals);
+        super(context, R.layout.proposals_item, R.id.name, proposals);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class ProposalsAdapter extends ArrayAdapter<Proposal> {
 
         View view = super.getView(position, convertView, parent);
 
-        TextView points = (TextView) view.findViewById(R.proposal.points);
+        TextView points = (TextView) view.findViewById(R.id.points);
         points.setText(String.valueOf(proposal.getAcceptancePoints()));
 
         int color;
@@ -37,7 +37,7 @@ public class ProposalsAdapter extends ArrayAdapter<Proposal> {
 
         points.setBackgroundResource(color);
 
-        TextView speaker = (TextView) view.findViewById(R.proposal.speaker);
+        TextView speaker = (TextView) view.findViewById(R.id.speaker);
         speaker.setText(proposal.getUser().getName());
 
         return view;
