@@ -1,17 +1,17 @@
 package com.call4paperz.android.activities;
 
 import android.app.AlertDialog;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import com.actionbarsherlock.app.SherlockListActivity;
 import com.call4paperz.android.R;
 import com.call4paperz.android.adapters.ProposalsAdapter;
 import com.call4paperz.android.model.Event;
 import com.call4paperz.android.model.Proposal;
 
-public class ProposalsActivity extends SherlockListActivity {
+public class ProposalsActivity extends ListActivity {
 
     private ListView proposalsListView;
     private Event event;

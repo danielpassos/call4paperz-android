@@ -2,17 +2,17 @@ package com.call4paperz.android.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.call4paperz.android.R;
 import com.call4paperz.android.model.Event;
 import com.squareup.picasso.Picasso;
 
-public class EventActivity extends SherlockActivity {
+public class EventActivity extends ActionBarActivity {
 
     private Event event;
 
@@ -47,7 +47,7 @@ public class EventActivity extends SherlockActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getSupportMenuInflater();
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_event, menu);
         return true;
     }

@@ -3,15 +3,15 @@ package com.call4paperz.android.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-import com.actionbarsherlock.app.SherlockListActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.call4paperz.android.Call4PaperzApplication;
 import com.call4paperz.android.R;
 import com.call4paperz.android.adapters.EventsAdapter;
@@ -21,7 +21,7 @@ import org.jboss.aerogear.android.pipeline.LoaderPipe;
 
 import java.util.List;
 
-public class EventsActivity extends SherlockListActivity {
+public class EventsActivity extends ActionBarActivity {
 
     private ListView eventsListView;
 
@@ -47,7 +47,7 @@ public class EventsActivity extends SherlockListActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getSupportMenuInflater();
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_events, menu);
         return true;
     }
