@@ -1,48 +1,34 @@
 package com.call4paperz.android.activities;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 import com.call4paperz.android.Call4PaperzApplication;
 import com.call4paperz.android.R;
-import com.call4paperz.android.adapters.EventsAdapter;
+import com.call4paperz.android.fragments.EventsFragments;
+import com.call4paperz.android.fragments.LoadFragment;
 import com.call4paperz.android.model.Event;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class EventsActivity extends ActionBarActivity {
 
-    private ListView eventsListView;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.events);
+        setContentView(R.layout.main);
 
-        eventsListView = (ListView) findViewById(android.R.id.list);
-        eventsListView.setClickable(true);
-        eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-                Event event = (Event) eventsListView.getAdapter().getItem(position);
-                Intent eventIntent = new Intent(EventsActivity.this, EventActivity.class);
-                // TODO Move to static variable
-                eventIntent.putExtra("event", event);
-                startActivity(eventIntent);
-            }
-        });
-
-        this.loadEvents();
+        loadEvents();
     }
 
     @Override
@@ -60,11 +46,7 @@ public class EventsActivity extends ActionBarActivity {
 
     private void loadEvents() {
 
-        final ProgressDialog progress = ProgressDialog.show(EventsActivity.this,
-                getString(R.string.loading),
-                getString(R.string.load_events),
-                true,
-                true);
+        displayFragment(new LoadFragment());
 
         Call4PaperzApplication application = (Call4PaperzApplication) getApplication();
         LoaderPipe<Event> eventPipe = application.getEventPipe(this);
@@ -72,18 +54,29 @@ public class EventsActivity extends ActionBarActivity {
         eventPipe.read(new Callback<List<Event>>() {
             @Override
             public void onSuccess(List<Event> events) {
-                eventsListView.setAdapter(new EventsAdapter(EventsActivity.this, events));
-                progress.dismiss();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Events", (Serializable) events);
+
+                EventsFragments eventsFragments = new EventsFragments();
+                eventsFragments.setArguments(bundle);
+
+                displayFragment(eventsFragments);
             }
 
             @Override
             public void onFailure(Exception e) {
-                progress.dismiss();
                 Log.e("Call4Paperz", e.getMessage(), e);
                 Toast.makeText(EventsActivity.this, getString(R.string.not_connection), Toast.LENGTH_LONG).show();
             }
         });
 
+    }
+
+    private void displayFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main, fragment);
+        fragmentTransaction.commit();
     }
 
 }
