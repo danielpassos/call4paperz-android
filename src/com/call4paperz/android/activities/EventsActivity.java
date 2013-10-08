@@ -15,6 +15,7 @@ import com.call4paperz.android.R;
 import com.call4paperz.android.fragments.EventsFragments;
 import com.call4paperz.android.fragments.LoadFragment;
 import com.call4paperz.android.model.Event;
+import com.crashlytics.android.Crashlytics;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 
@@ -26,6 +27,8 @@ public class EventsActivity extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Crashlytics.start(this);
+
         setContentView(R.layout.main);
 
         loadEvents();

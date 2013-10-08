@@ -40,6 +40,20 @@
         <proguard.skip>true</proguard.skip>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>crashlytics-repo</id>
+            <url>http://download.crashlytics.com/maven</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>crashlytics-plugin-repo</id>
+            <url>http://download.crashlytics.com/maven</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <dependencies>
         <dependency>
             <groupId>com.google.android</groupId>
@@ -81,6 +95,12 @@
             <groupId>com.squareup.picasso</groupId>
             <artifactId>picasso</artifactId>
             <version>2.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.crashlytics.android</groupId>
+            <artifactId>crashlytics</artifactId>
+            <version>[1.0.1,)</version>
         </dependency>
 
     </dependencies>
