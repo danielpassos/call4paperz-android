@@ -14,7 +14,7 @@
             <id>passos</id>
             <name>Daniel Passos</name>
             <url>http://passos.me/</url>
-            <email>dpassos@redhat.com</email>
+            <email>daniel@passos.me</email>
         </developer>
     </developers>
 
@@ -27,7 +27,8 @@
     <properties>
         <android.version>4.0.1.2</android.version>
         <aerogear.version>1.2.0</aerogear.version>
-        <appcompat.version>[18,)</appcompat.version>
+        <android.support.version>18</android.support.version>
+        <crashlytics.version>[1.0.1,)</crashlytics.version>
 
         <maven.android.plugin.verson>3.6.0</maven.android.plugin.verson>
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
@@ -38,6 +39,7 @@
         <android.debug>false</android.debug>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <proguard.skip>true</proguard.skip>
+        <crashlytics.plugin>1.0.3</crashlytics.plugin>
     </properties>
 
     <repositories>
@@ -80,14 +82,14 @@
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v7-appcompat</artifactId>
-            <version>${appcompat.version}</version>
+            <version>${android.support.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v7-appcompat</artifactId>
-            <version>${appcompat.version}</version>
+            <version>${android.support.version}</version>
             <type>apklib</type>
         </dependency>
 
@@ -100,7 +102,7 @@
         <dependency>
             <groupId>com.crashlytics.android</groupId>
             <artifactId>crashlytics</artifactId>
-            <version>[1.0.1,)</version>
+            <version>${crashlytics.version}</version>
         </dependency>
 
     </dependencies>
@@ -146,6 +148,25 @@
                         <skip>${proguard.skip}</skip>
                     </proguard>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.crashlytics</groupId>
+                <artifactId>crashlytics-maven</artifactId>
+                <version>${crashlytics.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>GenerateResources</id>
+                        <goals>
+                            <goal>GenerateResources</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>CleanupResources</id>
+                        <goals>
+                            <goal>CleanupResources</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
