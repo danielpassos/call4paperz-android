@@ -27,15 +27,15 @@
     <properties>
         <android.version>4.0.1.2</android.version>
         <aerogear.version>1.2.0</aerogear.version>
-        <android.support.version>18</android.support.version>
+        <android.support.version>[19.1,)</android.support.version>
         <crashlytics.version>[1.0.1,)</crashlytics.version>
 
         <maven.android.plugin.verson>3.6.0</maven.android.plugin.verson>
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
         <java.version>1.6</java.version>
 
-        <android.avd>18</android.avd>
-        <android.platform>18</android.platform>
+        <android.avd>19</android.avd>
+        <android.platform>19</android.platform>
         <android.debug>false</android.debug>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <proguard.skip>true</proguard.skip>
