@@ -6,9 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import com.call4paperz.android.R;
 import com.call4paperz.android.fragments.EventsFragments;
@@ -28,18 +26,27 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher;
+
 import static com.google.gson.FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES;
 
-public class EventsActivity extends ActionBarActivity {
+public class EventsActivity extends ActionBarActivity implements PullToRefreshAttacher.OnRefreshListener {
 
     private LoaderPipe<Event> eventPipe;
+    private PullToRefreshAttacher attacher;
+
+    public PullToRefreshAttacher getAttacher() {
+        return attacher;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
         Crashlytics.start(this);
 
-        setContentView(R.layout.main);
+        attacher = PullToRefreshAttacher.get(this);
 
         createPipe();
 
@@ -47,16 +54,8 @@ public class EventsActivity extends ActionBarActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_events, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public void onRefreshStarted(View view) {
         loadEvents();
-        return super.onOptionsItemSelected(item);
     }
 
     public void createPipe() {
@@ -85,7 +84,7 @@ public class EventsActivity extends ActionBarActivity {
         }
     }
 
-    private void loadEvents() {
+    public void loadEvents() {
         displayLoad();
         eventPipe.read(new ReadCallback());
     }
@@ -107,6 +106,8 @@ public class EventsActivity extends ActionBarActivity {
 
         EventsFragments eventsFragments = new EventsFragments();
         eventsFragments.setArguments(bundle);
+
+        attacher.setRefreshComplete();
 
         displayFragment(eventsFragments);
     }
