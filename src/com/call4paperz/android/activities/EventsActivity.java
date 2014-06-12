@@ -2,7 +2,6 @@ package com.call4paperz.android.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
@@ -18,11 +17,9 @@ import com.call4paperz.android.model.Event;
 import com.crashlytics.android.Crashlytics;
 import com.google.gson.GsonBuilder;
 
-import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
-import org.jboss.aerogear.android.pipeline.AbstractFragmentCallback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 import org.jboss.aerogear.android.pipeline.support.AbstractFragmentActivityCallback;
 
@@ -89,7 +86,7 @@ public class EventsActivity extends ActionBarActivity {
     }
 
     private void loadEvents() {
-        displayFragment(new LoadFragment());
+        displayLoad();
         eventPipe.read(new ReadCallback());
     }
 
@@ -100,19 +97,26 @@ public class EventsActivity extends ActionBarActivity {
         fragmentTransaction.commit();
     }
 
+    private void displayLoad() {
+        displayFragment(new LoadFragment());
+    }
+
+    private void displayEvents(List<Event> events) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Events", (Serializable) events);
+
+        EventsFragments eventsFragments = new EventsFragments();
+        eventsFragments.setArguments(bundle);
+
+        displayFragment(eventsFragments);
+    }
+
     private static class ReadCallback extends AbstractFragmentActivityCallback<List<Event>> {
 
         @Override
         public void onSuccess(List<Event> events) {
             EventsActivity activity = (EventsActivity) getFragmentActivity();
-
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("Events", (Serializable) events);
-
-            EventsFragments eventsFragments = new EventsFragments();
-            eventsFragments.setArguments(bundle);
-
-            activity.displayFragment(eventsFragments);
+            activity.displayEvents(events);
         }
 
         @Override
