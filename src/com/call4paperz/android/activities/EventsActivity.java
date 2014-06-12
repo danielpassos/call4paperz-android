@@ -69,7 +69,7 @@ public class EventsActivity extends ActionBarActivity {
             @Override
             public void onFailure(Exception e) {
                 Log.e("Call4Paperz", e.getMessage(), e);
-                Toast.makeText(EventsActivity.this, getString(R.string.not_connection), Toast.LENGTH_LONG).show();
+                Toast.makeText(EventsActivity.this, getString(R.string.an_error_occurred), Toast.LENGTH_LONG).show();
             }
         });
 

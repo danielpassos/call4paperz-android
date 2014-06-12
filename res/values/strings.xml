@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Call4Paperz</string>
-    <string name="not_connection">Could not connect to internet</string>
-    <string name="parse_error">An error occurred while trying to get the information</string>
+    <string name="an_error_occurred">An error occurred while trying to get the information</string>
     <string name="loading">Loading...</string>
     <string name="load_events">Loading Events</string>
     <string name="load_proposals">Loading Proposals</string>
