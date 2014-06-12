@@ -20,6 +20,7 @@ import com.google.gson.GsonBuilder;
 
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.Pipeline;
+import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.AbstractFragmentCallback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
@@ -74,7 +75,8 @@ public class EventsActivity extends ActionBarActivity {
             PipeConfig pipeConfigEvent = new PipeConfig(baseURL, Event.class);
             pipeConfigEvent.setName("events");
             pipeConfigEvent.setEndpoint("events.json");
-            pipeConfigEvent.setGsonBuilder(gsonBuilder);
+            pipeConfigEvent.setDataRoot("events");
+            pipeConfigEvent.setResponseParser(new GsonResponseParser(gsonBuilder.create()));
             pipeline.pipe(Event.class, pipeConfigEvent);
 
             return pipeline.get("events", this);
