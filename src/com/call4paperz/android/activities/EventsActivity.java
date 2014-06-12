@@ -40,7 +40,8 @@ public class EventsActivity extends ActionBarActivity {
         Crashlytics.start(this);
 
         setContentView(R.layout.main);
-        eventPipe = createPipe();
+
+        createPipe();
 
         loadEvents();
     }
@@ -58,7 +59,7 @@ public class EventsActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public LoaderPipe<Event> createPipe() {
+    public void createPipe() {
         try {
 
             URL baseURL = new URL("http://call4paperz.com");
@@ -76,12 +77,11 @@ public class EventsActivity extends ActionBarActivity {
             pipeConfigEvent.setResponseParser(new GsonResponseParser(gsonBuilder.create()));
             pipeline.pipe(Event.class, pipeConfigEvent);
 
-            return pipeline.get("events", this);
+            eventPipe = pipeline.get("events", this);
 
         } catch (MalformedURLException e) {
             Toast.makeText(getApplicationContext(), getString(R.string.an_error_occurred),
                     Toast.LENGTH_SHORT).show();
-            return null;
         }
     }
 
@@ -125,6 +125,7 @@ public class EventsActivity extends ActionBarActivity {
             Toast.makeText(getFragmentActivity().getApplicationContext(),
                     getFragmentActivity().getString(R.string.an_error_occurred), Toast.LENGTH_LONG).show();
         }
+
     }
 
 }
