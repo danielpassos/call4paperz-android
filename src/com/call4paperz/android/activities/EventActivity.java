@@ -8,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.call4paperz.android.Constants;
 import com.call4paperz.android.R;
 import com.call4paperz.android.model.Event;
 import com.squareup.picasso.Picasso;
@@ -21,7 +23,7 @@ public class EventActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_detail);
 
-        event = (Event) getIntent().getExtras().getSerializable("event");
+        event = (Event) getIntent().getExtras().getSerializable(Constants.EVENT);
 
         ImageView logo = (ImageView) findViewById(R.id.logo);
         String imageURL = event.getPicture().getCropped().getUrl();

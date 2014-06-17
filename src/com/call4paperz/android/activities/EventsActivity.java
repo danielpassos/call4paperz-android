@@ -8,6 +8,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.call4paperz.android.Constants;
 import com.call4paperz.android.R;
 import com.call4paperz.android.fragments.EventsFragments;
 import com.call4paperz.android.fragments.LoadFragment;
@@ -102,7 +104,7 @@ public class EventsActivity extends ActionBarActivity implements PullToRefreshAt
 
     private void displayEvents(List<Event> events) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable("Events", (Serializable) events);
+        bundle.putSerializable(Constants.EVENTS, (Serializable) events);
 
         EventsFragments eventsFragments = new EventsFragments();
         eventsFragments.setArguments(bundle);

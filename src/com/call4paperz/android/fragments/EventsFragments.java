@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.call4paperz.android.Constants;
 import com.call4paperz.android.R;
 import com.call4paperz.android.activities.EventActivity;
 import com.call4paperz.android.activities.EventsActivity;
@@ -22,7 +23,7 @@ public class EventsFragments extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final EventsActivity activity = (EventsActivity) getActivity();
-        final List<Event> events = (List<Event>) getArguments().getSerializable("Events");
+        final List<Event> events = (List<Event>) getArguments().getSerializable(Constants.EVENTS);
 
         View view = LayoutInflater.from(activity).inflate(R.layout.events, null);
         ListView eventsListView = (ListView) view.findViewById(android.R.id.list);
@@ -32,8 +33,7 @@ public class EventsFragments extends Fragment {
             public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
                 Event event = (Event) adapter.getItemAtPosition(position);
                 Intent eventIntent = new Intent(activity, EventActivity.class);
-                // TODO Move to static variable
-                eventIntent.putExtra("event", event);
+                eventIntent.putExtra(Constants.EVENT, event);
                 startActivity(eventIntent);
             }
         });
