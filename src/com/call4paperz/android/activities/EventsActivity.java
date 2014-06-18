@@ -34,7 +34,8 @@ import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher;
 import static com.google.gson.FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES;
 
 @EActivity
-public class EventsActivity extends ActionBarActivity implements PullToRefreshAttacher.OnRefreshListener {
+public class EventsActivity extends ActionBarActivity
+        implements PullToRefreshAttacher.OnRefreshListener {
 
     private LoaderPipe<Event> eventPipe;
     private PullToRefreshAttacher attacher;
@@ -52,9 +53,7 @@ public class EventsActivity extends ActionBarActivity implements PullToRefreshAt
 
         attacher = PullToRefreshAttacher.get(this);
 
-        createPipe();
-
-        loadEvents();
+        createPipeAndLoadEvents();
     }
 
     @Override
@@ -62,7 +61,7 @@ public class EventsActivity extends ActionBarActivity implements PullToRefreshAt
         loadEvents();
     }
 
-    public void createPipe() {
+    public void createPipeAndLoadEvents() {
         try {
 
             URL baseURL = new URL("http://call4paperz.com");
@@ -81,6 +80,8 @@ public class EventsActivity extends ActionBarActivity implements PullToRefreshAt
             pipeline.pipe(Event.class, pipeConfigEvent);
 
             eventPipe = pipeline.get("events", this);
+
+            loadEvents();
 
         } catch (MalformedURLException e) {
             Toast.makeText(getApplicationContext(), getString(R.string.an_error_occurred),
