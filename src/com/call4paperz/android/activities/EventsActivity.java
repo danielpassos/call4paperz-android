@@ -17,6 +17,7 @@ import com.call4paperz.android.model.Event;
 import com.crashlytics.android.Crashlytics;
 import com.google.gson.GsonBuilder;
 
+import org.androidannotations.annotations.EActivity;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
@@ -32,6 +33,7 @@ import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher;
 
 import static com.google.gson.FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES;
 
+@EActivity
 public class EventsActivity extends ActionBarActivity implements PullToRefreshAttacher.OnRefreshListener {
 
     private LoaderPipe<Event> eventPipe;

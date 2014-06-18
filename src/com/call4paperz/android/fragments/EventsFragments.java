@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import com.call4paperz.android.Constants;
 import com.call4paperz.android.R;
-import com.call4paperz.android.activities.EventActivity;
+import com.call4paperz.android.activities.EventActivity_;
 import com.call4paperz.android.activities.EventsActivity;
 import com.call4paperz.android.adapters.EventsAdapter;
 import com.call4paperz.android.model.Event;
@@ -32,7 +32,7 @@ public class EventsFragments extends Fragment {
         eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
                 Event event = (Event) adapter.getItemAtPosition(position);
-                Intent eventIntent = new Intent(activity, EventActivity.class);
+                Intent eventIntent = new Intent(activity, EventActivity_.class);
                 eventIntent.putExtra(Constants.EVENT, event);
                 startActivity(eventIntent);
             }
