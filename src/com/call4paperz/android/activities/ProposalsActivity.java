@@ -21,14 +21,14 @@ public class ProposalsActivity extends ListActivity {
     private List<Proposal> proposals;
 
     @AfterViews
-    public void displayProposals() {
+    void displayProposals() {
         Event event = (Event) getIntent().getExtras().getSerializable(Constants.EVENT);
         this.proposals = event.getProposals();
         setListAdapter(new ProposalsAdapter(getApplicationContext(), this.proposals));
     }
 
     @ItemClick(android.R.id.list)
-    public void showProposal(int position) {
+    void showProposal(int position) {
         Proposal proposal = this.proposals.get(position);
         new AlertDialog.Builder(ProposalsActivity.this)
                 .setTitle(proposal.getName())
