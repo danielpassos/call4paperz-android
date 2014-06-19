@@ -11,12 +11,13 @@ import android.widget.Toast;
 
 import com.call4paperz.android.Constants;
 import com.call4paperz.android.R;
-import com.call4paperz.android.fragments.EventsFragments;
+import com.call4paperz.android.fragments.EventsFragments_;
 import com.call4paperz.android.fragments.LoadFragment;
 import com.call4paperz.android.model.Event;
 import com.crashlytics.android.Crashlytics;
 import com.google.gson.GsonBuilder;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
@@ -33,7 +34,7 @@ import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher;
 
 import static com.google.gson.FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES;
 
-@EActivity
+@EActivity(R.layout.main)
 public class EventsActivity extends ActionBarActivity
         implements PullToRefreshAttacher.OnRefreshListener {
 
@@ -44,15 +45,10 @@ public class EventsActivity extends ActionBarActivity
         return attacher;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-
+    @AfterViews
+    public void setup() {
         Crashlytics.start(this);
-
         attacher = PullToRefreshAttacher.get(this);
-
         createPipeAndLoadEvents();
     }
 
@@ -109,12 +105,12 @@ public class EventsActivity extends ActionBarActivity
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constants.EVENTS, (Serializable) events);
 
-        EventsFragments eventsFragments = new EventsFragments();
+        EventsFragments_ eventsFragments = new EventsFragments_();
         eventsFragments.setArguments(bundle);
 
-        attacher.setRefreshComplete();
-
         displayFragment(eventsFragments);
+
+        attacher.setRefreshComplete();
     }
 
     private static class ReadCallback extends AbstractFragmentActivityCallback<List<Event>> {
