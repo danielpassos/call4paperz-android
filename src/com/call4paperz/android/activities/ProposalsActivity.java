@@ -15,8 +15,8 @@ import org.androidannotations.annotations.ItemClick;
 
 import java.util.List;
 
-@EActivity(R.layout.events)
 public class ProposalsActivity extends ListActivity {
+@EActivity(R.layout.proposals)
 
     private List<Proposal> proposals;
 
