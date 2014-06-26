@@ -1,6 +1,7 @@
 package com.call4paperz.android.activities;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +31,8 @@ public class EventActivity extends ActionBarActivity {
 
     @AfterViews
     void displayEventDetail() {
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         this.event = (Event) getIntent().getExtras().getSerializable(Constants.EVENT);
 
         String imageURL = event.getPicture().getCropped().getUrl();
@@ -43,7 +46,12 @@ public class EventActivity extends ActionBarActivity {
         organizer.setText(event.getOrganizer().getName());
     }
 
-    @OptionsItem
+    @OptionsItem(android.R.id.home)
+    void back() {
+        finish();
+    }
+
+    @OptionsItem(R.id.proposal)
     void proposalSelected() {
         Intent intent = new Intent(getApplicationContext(), ProposalsActivity_.class);
         intent.putExtra(Constants.EVENT, event);
