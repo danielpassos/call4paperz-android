@@ -26,22 +26,25 @@ public class ProposalsAdapter extends ArrayAdapter<Proposal> {
         TextView points = (TextView) view.findViewById(R.id.points);
         points.setText(String.valueOf(proposal.getAcceptancePoints()));
 
-        int color;
-        if( proposal.getAcceptancePoints() > 0 ) {
-            color = R.color.green;
-        } else if( proposal.getAcceptancePoints() < 0 ) {
-            color = R.color.red;
-        } else {
-            color = R.color.gray;
-        }
-
-        points.setBackgroundResource(color);
+        points.setBackgroundResource(colorFromProposal(proposal));
 
         TextView speaker = (TextView) view.findViewById(R.id.speaker);
         speaker.setText(proposal.getUser().getName());
 
         return view;
 
+    }
+
+    private int colorFromProposal(Proposal proposal) {
+        int color;
+        if (proposal.getAcceptancePoints() > 0) {
+            color = R.color.green;
+        } else if (proposal.getAcceptancePoints() < 0) {
+            color = R.color.red;
+        } else {
+            color = R.color.gray;
+        }
+        return color;
     }
 
 }

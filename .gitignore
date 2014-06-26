@@ -2,6 +2,7 @@
 
 # built application files
 bin/
+build/
 *.apk
 *.ap_
 
